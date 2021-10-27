@@ -38,3 +38,12 @@ Route::post('/posts', function(){
 
     );
 });
+
+Route::put('/posts/{post}', function ( Post $post ){
+    return $post->update(
+        [
+            'title' => request('title'),
+            'content' => request('content'),
+        ]
+    );
+});
