@@ -24,6 +24,12 @@ Route::get('/posts', function (){
 });
 
 Route::post('/posts', function(){
+    request()->validate(
+        [
+            'title' => 'required',
+            'content' => 'required'
+        ]
+    );
     return Post::create(
         [
             'title' => request('title'),
