@@ -40,6 +40,13 @@ Route::post('/posts', function(){
 
 Route::put('/posts/{post}', function ( Post $post ){
 
+    request()->validate(
+        [
+            'title' => 'required',
+            'content' => 'required'
+        ]
+    );
+
     $success = $post->update(
         [
             'title' => request('title'),
