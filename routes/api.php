@@ -35,15 +35,20 @@ Route::post('/posts', function(){
             'title' => request('title'),
             'content' => request('content')
         ]
-
     );
 });
 
 Route::put('/posts/{post}', function ( Post $post ){
-    return $post->update(
+
+    $success = $post->update(
         [
             'title' => request('title'),
             'content' => request('content'),
         ]
     );
+
+    return [
+        'success' => $success
+    ];
+
 });
